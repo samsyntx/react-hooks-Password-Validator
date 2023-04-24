@@ -11,6 +11,18 @@ import {
 
 const PasswordValidator = () => {
   const [userInput, newInput] = useState('')
+  const [isError, errorUpdate] = useState(true)
+
+  const passwordInputChanged = event => {
+    const userInputLength = userInput.length
+    if (userInputLength < 8) {
+      errorUpdate(true)
+      newInput(event.target.value)
+    } else {
+      errorUpdate(false)
+      newInput(event.target.value)
+    }
+  }
 
   return (
     <CompleteValidatorContainer>
@@ -20,10 +32,16 @@ const PasswordValidator = () => {
           Check how strong and secure is your password
         </ValidatorParagraph>
 
-        <InputPasswordContainer type="password" value={userInput} />
-        <PasswordErrorMsg>
-          Your Password must be at least 8 character
-        </PasswordErrorMsg>
+        <InputPasswordContainer
+          onChange={passwordInputChanged}
+          type="password"
+          value={userInput}
+        />
+        {isError && (
+          <PasswordErrorMsg>
+            Your password must be at least 8 characters
+          </PasswordErrorMsg>
+        )}
       </InsideValidateContainer>
     </CompleteValidatorContainer>
   )

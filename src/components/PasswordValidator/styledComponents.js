@@ -25,6 +25,7 @@ export const InsideValidateContainer = styled.div`
 export const ValidateHeading = styled.h1`
   font-weight: 500;
   margin-bottom: 20px;
+  font-family: 'Roboto';
 `
 
 export const ValidatorParagraph = styled.p`
@@ -37,6 +38,7 @@ export const InputPasswordContainer = styled.input`
   height: 30px;
   border: none;
   border-radius: 5px;
+  padding: 10px;
 `
 
 export const PasswordErrorMsg = styled.p`
